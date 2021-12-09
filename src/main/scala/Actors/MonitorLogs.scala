@@ -24,7 +24,7 @@ class LogsProducer {
     props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
     props.put("acks","all")
     val producer = new KafkaProducer[String, String](props)
-    val topic = "Violating Logs"
+    val topic = "ViolatingLogs"
     try {
       val record = new ProducerRecord[String, String](topic, "key", logString)
       producer.send(record)
@@ -52,7 +52,7 @@ class LogsConsumer extends Actor {
       props.put("enable.auto.commit", "true")
       props.put("auto.commit.interval.ms", "1000")
       val consumer = new KafkaConsumer(props)
-      val topics = List("Violating Logs")
+      val topics = List("ViolatingLogs")
       consumer.subscribe(topics.asJava)
       val records = consumer.poll(10)
       records.forEach(record => println(record))
