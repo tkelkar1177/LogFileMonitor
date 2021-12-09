@@ -56,7 +56,7 @@ class LogsConsumer extends Actor {
       val consumer = new KafkaConsumer(props)
       val topics = List("ViolatingLogs")
       consumer.subscribe(topics.asJava)
-      consumer.poll((new Duration(10)))
+      consumer.poll(10)
       println("Logs consumed successfully. Sending over info to Spark application...")
       consumer.close()
     case _ => println("Failed to Consume logs from the Kafka record")
