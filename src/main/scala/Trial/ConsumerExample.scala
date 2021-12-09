@@ -12,7 +12,6 @@ object ConsumerExample extends App {
 
   println("Starting Consumer")
   val TOPIC="test"
-  Thread.sleep(240000)
   val  props = new Properties()
   props.put("bootstrap.servers", "localhost:9092")
 

@@ -67,7 +67,7 @@ class FileMonitor(receiver: ActorRef) extends Actor {
       println("Starting log file monitoring")
 
       val s3: AmazonS3 = AmazonS3ClientBuilder.standard.withRegion(Regions.US_EAST_1).build
-      val file = new File("/home/ec2-user/Project/LFG1/ProjectLFG/log/LogFileGenerator.2021-12-09.log")
+      val file = new File("C:\\Users\\tanma\\OneDrive\\Desktop\\Cloud Project\\ProjectLFG\\log\\LogFileGenerator.2021-12-09.log")
       while(true) {
 
         val lines = scala.io.Source.fromFile(file).mkString
