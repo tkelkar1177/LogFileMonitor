@@ -12,11 +12,12 @@ import org.apache.kafka.clients.consumer.KafkaConsumer
 
 import scala.collection.JavaConverters._
 import java.io.{File, FileInputStream}
+import java.time.Duration
 
 class LogsProducer {
 
   def createLogRecord(receiver: ActorRef,logString: String) :Unit = {
-    println("Sending logs to Kafka Cluster")
+    println("Running the Producer to send the logs to create a Kafka record...")
 
     val props:Properties = new Properties()
     props.put("bootstrap.servers","localhost:9092")
@@ -28,8 +29,9 @@ class LogsProducer {
     try {
       val record = new ProducerRecord[String, String](topic, "key", logString)
       producer.send(record)
-      println("The Kafka record has been created")
-      receiver ! logString
+      println("The Kafka record has been created with the following logs:\n"+logString)
+      println("Sending 'Consume' message to the Consumer actor...")
+      receiver ! "Consume"
     }catch{
       case e:Exception => e.printStackTrace()
     }finally {
@@ -41,8 +43,8 @@ class LogsProducer {
 class LogsConsumer extends Actor {
 
   def receive: Receive = {
-    case logs: String =>
-      println("Running the Consumer to get the following logs:\n" +logs)
+    case "Consume" =>
+      println("Running the Consumer to get the logs...")
       println()
       val props:Properties = new Properties()
       props.put("group.id", "test")
@@ -54,9 +56,10 @@ class LogsConsumer extends Actor {
       val consumer = new KafkaConsumer(props)
       val topics = List("ViolatingLogs")
       consumer.subscribe(topics.asJava)
-      val records = consumer.poll(10)
-      records.forEach(record => println(record))
+      consumer.poll((new Duration(10)))
+      println("Logs consumed successfully. Sending over info to Spark application...")
       consumer.close()
+    case _ => println("Failed to Consume logs from the Kafka record")
   }
 }
 
@@ -81,19 +84,23 @@ class FileMonitor(receiver: ActorRef) extends Actor {
         if(lastLogLevel == "INFO" && secondLastLogLevel == "INFO" || lastLogLevel == "ERROR" && secondLastLogLevel == "WARN" || lastLogLevel == "ERROR" && secondLastLogLevel == "ERROR" || lastLogLevel == "WARN" && secondLastLogLevel == "WARN") {
           val logString = lastLine(0) + " " + secondLastLogLevel + " " + lastLine(lastLine.length-1) + "\n" + secondLastLine(0) + " " + lastLogLevel + " " + secondLastLine(secondLastLine.length-1)
           val obj = new LogsProducer
+          println("Violating logs detected. Sending log info to Producer actor...")
           obj.createLogRecord(receiver, logString)
           Thread.sleep(2500)
         }
       }
+    case _ => println("Failed to start Actor system")
   }
 }
 
-object HelloAkka extends App {
+object MonitorLogs extends App {
 
   val system = ActorSystem("Actor-System")
 
   val receiver = system.actorOf(Props[LogsConsumer],"LogsReceiver")
   val monitor = system.actorOf(Props(new FileMonitor(receiver)),"FileMonitor")
+
+  println("Sending 'Start' message to the file monitor actor...")
 
   monitor ! "Start"
 }
