@@ -29,7 +29,7 @@ class LogsProducer {
       val record = new ProducerRecord[String, String](topic, "key", logString)
       producer.send(record)
       println("The Kafka record has been created")
-      receiver ! "Record Created"
+      receiver ! logString
     }catch{
       case e:Exception => e.printStackTrace()
     }finally {
@@ -41,8 +41,9 @@ class LogsProducer {
 class LogsConsumer extends Actor {
 
   def receive: Receive = {
-    case "Record Created" =>
-      println("Running the Consumer:")
+    case logs: String =>
+      println("Running the Consumer to get the following logs:\n" +logs)
+      println()
       val props:Properties = new Properties()
       props.put("group.id", "test")
       props.put("bootstrap.servers","localhost:9092")
