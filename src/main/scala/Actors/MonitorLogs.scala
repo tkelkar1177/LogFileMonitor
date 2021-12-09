@@ -70,8 +70,9 @@ class FileMonitor(receiver: ActorRef) extends Actor {
       val file = new File("/home/tanmay/ProjectLFG/log/LogFileGenerator.2021-12-09.log")
       while(true) {
 
-        val lines = scala.io.Source.fromFile(file).mkString
-
+        val linesSource = scala.io.Source.fromFile(file)
+        val lines = linesSource.mkString
+        linesSource.close()
         val logs = lines.split("\n")
         val lastLine = logs(logs.length-1).split(" ")
         val secondLastLine = logs(logs.length-2).split(" ")
