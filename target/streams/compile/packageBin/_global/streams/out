@@ -6,30 +6,16 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\FileMonitor$$anonfun$receive$2.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\FileMonitor.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\FileMonitor.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Actors\HelloAkka$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\HelloAkka$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Actors\HelloAkka$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\HelloAkka$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Actors\HelloAkka.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\HelloAkka.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\LogsConsumer$$anonfun$receive$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\LogsConsumer$$anonfun$receive$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\LogsConsumer.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\LogsConsumer.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\LogsProducer.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\LogsProducer.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Trial[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Trial[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Trial\ConsumerExample$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Trial\ConsumerExample$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Trial\ConsumerExample$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Trial\ConsumerExample$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Trial\ConsumerExample.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Trial\ConsumerExample.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Trial\ProducerExample$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Trial\ProducerExample$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Trial\ProducerExample$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Trial\ProducerExample$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Trial\ProducerExample.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Trial\ProducerExample.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Actors\MonitorLogs$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Actors\MonitorLogs$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Actors\MonitorLogs.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
