@@ -26,11 +26,11 @@ class LogsProducer {
       producer.send(record)
       println("The Kafka record has been created with the following logs:\n"+logString)
       println("Sending the state back to monitoring...")
-      logMonitor ! "Monitor"
     }catch{
       case e:Exception => e.printStackTrace()
     }finally {
       producer.close()
+      logMonitor ! "Monitor"
     }
   }
 }
