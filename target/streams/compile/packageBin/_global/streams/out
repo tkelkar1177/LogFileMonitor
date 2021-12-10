@@ -1,21 +1,29 @@
-[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\akkawithkafkastreaming_2.13-0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\akkawithkafkastreaming_2.13-0.1.jar ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\FileMonitor$$anonfun$receive$2.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\FileMonitor$$anonfun$receive$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors\FileMonitor$$anonfun$receive$2.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\FileMonitor.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\FileMonitor.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors\FileMonitor.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\LogsConsumer$$anonfun$receive$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\LogsConsumer$$anonfun$receive$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors\LogsConsumer$$anonfun$receive$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\LogsConsumer.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\LogsConsumer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors\LogsConsumer.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\LogsProducer.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\LogsProducer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors\LogsProducer.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\MonitorLogs$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\MonitorLogs$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs$delayedInit$body.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Actors\MonitorLogs.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Actors\MonitorLogs.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Spark[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Spark[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Spark\GenerateMail$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Spark\GenerateMail$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Spark\GenerateMail$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Spark\GenerateMail$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Spark\GenerateMail.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\tanma\OneDrive\Desktop\Cloud Project Final\LogFileMonitor\target\scala-2.13\classes\Spark\GenerateMail.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
