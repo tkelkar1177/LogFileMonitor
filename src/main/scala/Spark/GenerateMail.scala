@@ -8,9 +8,9 @@ import org.apache.kafka.clients.consumer.{ConsumerRecords, KafkaConsumer}
 
 import scala.collection.JavaConverters._
 
-class GenerateMail {
+object GenerateMail extends App{
 
-  def sendMail(logs: String) :Unit = {
+  def runAggregator() :Unit = {
 
     val conf = new SparkConf().setAppName("Logs aggregator")
       .setMaster("local")
@@ -23,13 +23,14 @@ class GenerateMail {
       props.put("bootstrap.servers", "localhost:9092")
       props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
       props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
+      props.put("fetch.max.wait.ms", "15000")
       props.put("enable.auto.commit", "true")
-      props.put("auto.commit.interval.ms", "1000")
+      props.put("auto.commit.interval.ms", "15000")
       val consumer = new KafkaConsumer(props)
       val topics = List("ViolatingLogs")
       consumer.subscribe(topics.asJava)
       val records = consumer.poll(10)
-      records.asScala.foreach(record => println(record.value))
+      records.asScala.foreach(record => println("-------->"+record.value))
       consumer.close()
       println("\n\n")
     }
