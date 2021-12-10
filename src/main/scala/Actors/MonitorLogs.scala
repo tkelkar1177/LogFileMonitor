@@ -1,6 +1,6 @@
 package Actors
 
-import Spark.GenerateMail.sendMail
+import Actors.MonitorLogs.receiver
 
 import java.util.logging.Logger
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
@@ -32,23 +32,12 @@ class LogsProducer {
       val record = new ProducerRecord[String, String](topic, "key", logString)
       producer.send(record)
       println("The Kafka record has been created with the following logs:\n"+logString)
-      println("Sending 'Consume' message to the Consumer actor...")
-      receiver ! "Consume"
+      println("The Spark app will consume these logs now...")
     }catch{
       case e:Exception => e.printStackTrace()
     }finally {
       producer.close()
     }
-  }
-}
-
-class LogsConsumer extends Actor {
-
-  def receive: Receive = {
-    case "Consume" =>
-      println("Running the Consumer in the Spark application to get the logs...")
-      sendMail()
-    case _ => println("Failed to Consume logs from the Kafka record")
   }
 }
 
