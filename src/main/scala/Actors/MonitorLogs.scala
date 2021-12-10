@@ -1,5 +1,6 @@
 package Actors
 
+import Actors.MonitorLogs.system
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
@@ -8,7 +9,9 @@ import java.util.Properties
 
 class LogsProducer {
 
-  def createLogRecord(receiver: ActorRef,logString: String) :Unit = {
+  val monitor: ActorRef = system.actorOf(Props[FileMonitor],"FileMonitor")
+
+  def createLogRecord(logString: String) :Unit = {
     println("Running the Producer to send the logs to create a Kafka record...")
 
     val props:Properties = new Properties()
@@ -23,7 +26,7 @@ class LogsProducer {
       producer.send(record)
       println("The Kafka record has been created with the following logs:\n"+logString)
       println("Sending the state back to monitoring...")
-      receiver ! "Monitor"
+      monitor ! "Monitor"
     }catch{
       case e:Exception => e.printStackTrace()
     }finally {
@@ -32,7 +35,7 @@ class LogsProducer {
   }
 }
 
-class FileMonitor(receiver: ActorRef) extends Actor {
+class FileMonitor extends Actor {
 
   val file = new File("/home/ec2-user/Project/LFG1/ProjectLFG/log/LogFileGenerator.2021-12-10.log")
 
@@ -53,7 +56,7 @@ class FileMonitor(receiver: ActorRef) extends Actor {
         val logString = lastLine(0) + " " + secondLastLogLevel + " " + lastLine(lastLine.length-1) + "\n" + secondLastLine(0) + " " + lastLogLevel + " " + secondLastLine(secondLastLine.length-1)
         val obj = new LogsProducer
         println("Violating logs detected. Sending log info to Producer...")
-        obj.createLogRecord(receiver, logString)
+        obj.createLogRecord(logString)
         Thread.sleep(2500)
       }
     case _ => println("Failed to run Actor system")
