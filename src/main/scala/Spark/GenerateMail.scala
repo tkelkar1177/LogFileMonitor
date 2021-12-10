@@ -8,9 +8,9 @@ import org.apache.kafka.clients.consumer.{ConsumerRecords, KafkaConsumer}
 
 import scala.collection.JavaConverters._
 
-object GenerateMail extends App{
+object GenerateMail{
 
-  def runAggregator() :Unit = {
+  def main(args: Array[String]) :Unit = {
 
     val conf = new SparkConf().setAppName("Logs aggregator")
       .setMaster("local")

@@ -67,7 +67,7 @@ object MonitorLogs extends App {
 
   val system = ActorSystem("Actor-System")
 
-  val monitor = system.actorOf(Props[FileMonitor],"FileMonitor")
+  val monitor = system.actorOf(Props[FileMonitor],"FileMonitorStarter")
 
   println("Sending 'Start' message to the file monitor actor...")
 
