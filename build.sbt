@@ -12,6 +12,7 @@ val log4jCore = "2.14.1"
 val log4jSlf4jImpl = "2.14.1"
 val abc = "2.14.1"
 val slf4j = "1.2.17"
+val sparkCore = "3.2.0"
 
 resolvers += Resolver.jcenterRepo
 
@@ -23,5 +24,6 @@ libraryDependencies ++= Seq(
   "org.apache.logging.log4j" % "log4j-api" % log4jApi,
   "org.apache.logging.log4j" % "log4j-core" % log4jCore,
   "log4j" % "log4j" % slf4j,
-  "org.apache.logging.log4j" % "log4j-slf4j-impl" % abc
+  "org.apache.logging.log4j" % "log4j-slf4j-impl" % abc,
+  "org.apache.spark" %% "spark-core" % sparkCore
 )
