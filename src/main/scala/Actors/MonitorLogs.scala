@@ -1,6 +1,6 @@
 package Actors
 
-import Actors.MonitorLogs.receiver
+import Actors.MonitorLogs.{receiver, system}
 import Spark.GenerateMail
 
 import java.util.logging.Logger
@@ -21,7 +21,7 @@ import scala.concurrent.duration._
 
 class LogsProducer {
 
-  def createLogRecord(receiver: ActorRef,logString: String) :Unit = {
+  def createLogRecord(logString: String) :Unit = {
     println("Running the Producer to send the logs to create a Kafka record...")
 
     val props:Properties = new Properties()
@@ -35,9 +35,7 @@ class LogsProducer {
       val record = new ProducerRecord[String, String](topic, "key", logString)
       producer.send(record)
       println("The Kafka record has been created with the following logs:\n"+logString)
-      println("Sending 'Consume' message to the Consumer actor...")
-      receiver ! "Consume"
-    }catch{
+    }catch {
       case e:Exception => e.printStackTrace()
     }finally {
       producer.close()
@@ -52,55 +50,53 @@ class LogsConsumer extends Actor {
   def receive: Receive = {
     case "Consume" =>
       println("Running the Consumer to get the logs...")
-      while(true) {
-        println("Running the Consumer in the Spark app to get the logs...")
-        val props: Properties = new Properties()
-        props.put("group.id", "ViolatingLogs")
-        props.put("bootstrap.servers", "localhost:9092")
-        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-        props.put("enable.auto.commit", "true")
-        props.put("auto.commit.interval.ms", "1000")
-        val consumer = new KafkaConsumer(props)
-        val topics = List("ViolatingLogs")
-        consumer.subscribe(topics.asJava)
-        var records: String = ""
-        while(deadline.hasTimeLeft) {
-          records += consumer.poll(Duration.ofSeconds(10)).asScala.mkString.concat("\n")
-        }
-        consumer.close()
-        new GenerateMail().sendMail(records)
-      }
+      println("Running the Consumer in the Spark app to get the logs...")
+      val props: Properties = new Properties()
+      props.put("group.id", "ViolatingLogs")
+      props.put("bootstrap.servers", "localhost:9092")
+      props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
+      props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
+      props.put("enable.auto.commit", "true")
+      props.put("auto.commit.interval.ms", "1000")
+      val consumer = new KafkaConsumer(props)
+      val topics = List("ViolatingLogs")
+      consumer.subscribe(topics.asJava)
+      val records = consumer.poll(Duration.ofSeconds(10)).asScala.mkString.concat("\n")
+      consumer.close()
+      new GenerateMail().sendMail(records)
     case _ => println("Failed to Consume logs from the Kafka record")
   }
 }
 
 class FileMonitor(receiver: ActorRef) extends Actor {
 
+  val deadline = 20.seconds.fromNow
+
   def receive: Receive = {
     case "Start" =>
 
       println("Starting log file monitoring")
 
-      val s3: AmazonS3 = AmazonS3ClientBuilder.standard.withRegion(Regions.US_EAST_1).build
       val file = new File("/home/ec2-user/Project/LFG1/ProjectLFG/log/LogFileGenerator.2021-12-10.log")
       while(true) {
-
-        val linesSource = scala.io.Source.fromFile(file)
-        val lines = linesSource.mkString
-        linesSource.close()
-        val logs = lines.split("\n")
-        val lastLine = logs(logs.length-1).split(" ")
-        val secondLastLine = logs(logs.length-2).split(" ")
-        val lastLogLevel = lastLine(2)
-        val secondLastLogLevel = secondLastLine(2)
-        if(lastLogLevel == "INFO" && secondLastLogLevel == "INFO" || lastLogLevel == "ERROR" && secondLastLogLevel == "WARN" || lastLogLevel == "ERROR" && secondLastLogLevel == "ERROR" || lastLogLevel == "WARN" && secondLastLogLevel == "WARN") {
-          val logString = lastLine(0) + " " + secondLastLogLevel + " " + lastLine(lastLine.length-1) + "\n" + secondLastLine(0) + " " + lastLogLevel + " " + secondLastLine(secondLastLine.length-1)
-          val obj = new LogsProducer
-          println("Violating logs detected. Sending log info to Producer actor...")
-          obj.createLogRecord(receiver, logString)
-          Thread.sleep(2500)
+        while(deadline.hasTimeLeft) {
+          val linesSource = scala.io.Source.fromFile(file)
+          val lines = linesSource.mkString
+          linesSource.close()
+          val logs = lines.split("\n")
+          val lastLine = logs(logs.length-1).split(" ")
+          val secondLastLine = logs(logs.length-2).split(" ")
+          val lastLogLevel = lastLine(2)
+          val secondLastLogLevel = secondLastLine(2)
+          if(lastLogLevel == "INFO" && secondLastLogLevel == "INFO" || lastLogLevel == "ERROR" && secondLastLogLevel == "WARN" || lastLogLevel == "ERROR" && secondLastLogLevel == "ERROR" || lastLogLevel == "WARN" && secondLastLogLevel == "WARN") {
+            val logString = lastLine(0) + " " + secondLastLogLevel + " " + lastLine(lastLine.length-1) + "\n" + secondLastLine(0) + " " + lastLogLevel + " " + secondLastLine(secondLastLine.length-1)
+            val obj = new LogsProducer
+            println("Violating logs detected. Sending log info to Producer actor...")
+            obj.createLogRecord(logString)
+            Thread.sleep(2500)
+          }
         }
+        receiver ! "Consume"
       }
     case _ => println("Failed to start Actor system")
   }
