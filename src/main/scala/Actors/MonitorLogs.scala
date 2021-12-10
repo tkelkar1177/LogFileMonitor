@@ -1,7 +1,5 @@
 package Actors
 
-import Actors.MonitorLogs.receiver
-
 import java.util.logging.Logger
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.kafka.ProducerSettings
@@ -18,7 +16,7 @@ import java.time.Duration
 
 class LogsProducer {
 
-  def createLogRecord(receiver: ActorRef,logString: String) :Unit = {
+  def createLogRecord(logString: String) :Unit = {
     println("Running the Producer to send the logs to create a Kafka record...")
 
     val props:Properties = new Properties()
@@ -41,7 +39,7 @@ class LogsProducer {
   }
 }
 
-class FileMonitor(receiver: ActorRef) extends Actor {
+class FileMonitor() extends Actor {
   def receive: Receive = {
     case "Start" =>
 
@@ -63,7 +61,7 @@ class FileMonitor(receiver: ActorRef) extends Actor {
           val logString = lastLine(0) + " " + secondLastLogLevel + " " + lastLine(lastLine.length-1) + "\n" + secondLastLine(0) + " " + lastLogLevel + " " + secondLastLine(secondLastLine.length-1)
           val obj = new LogsProducer
           println("Violating logs detected. Sending log info to Producer actor...")
-          obj.createLogRecord(receiver, logString)
+          obj.createLogRecord(logString)
           Thread.sleep(2500)
         }
       }
@@ -75,8 +73,7 @@ object MonitorLogs extends App {
 
   val system = ActorSystem("Actor-System")
 
-  val receiver = system.actorOf(Props[LogsConsumer],"LogsReceiver")
-  val monitor = system.actorOf(Props(new FileMonitor(receiver)),"FileMonitor")
+  val monitor = system.actorOf(Props[FileMonitor],"FileMonitor")
 
   println("Sending 'Start' message to the file monitor actor...")
 
