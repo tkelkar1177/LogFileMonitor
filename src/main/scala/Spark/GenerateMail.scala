@@ -9,7 +9,7 @@ import scala.collection.JavaConverters._
 
 object GenerateMail {
 
-  def main(args: Array[String]): Unit = {
+  def sendMail(): Unit = {
 
     val conf = new SparkConf().setAppName("Logs aggregator")
       .setMaster("local")

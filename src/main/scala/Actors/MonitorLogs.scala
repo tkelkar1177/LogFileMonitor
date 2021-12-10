@@ -1,5 +1,7 @@
 package Actors
 
+import Spark.GenerateMail.sendMail
+
 import java.util.logging.Logger
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.kafka.ProducerSettings
@@ -44,20 +46,8 @@ class LogsConsumer extends Actor {
 
   def receive: Receive = {
     case "Consume" =>
-      println("Running the Consumer to get the logs...")
-      val props:Properties = new Properties()
-      props.put("group.id", "ViolatingLogs")
-      props.put("bootstrap.servers","localhost:9092")
-      props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-      props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-      props.put("enable.auto.commit", "true")
-      props.put("auto.commit.interval.ms", "1000")
-      val consumer = new KafkaConsumer(props)
-      val topics = List("ViolatingLogs")
-      consumer.subscribe(topics.asJava)
-      consumer.poll(10)
-      println("Logs consumed successfully. Sending over info to Spark application...\n")
-      consumer.close()
+      println("Running the Consumer in the Spark application to get the logs...")
+      sendMail()
     case _ => println("Failed to Consume logs from the Kafka record")
   }
 }
