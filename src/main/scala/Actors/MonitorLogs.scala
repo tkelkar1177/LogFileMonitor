@@ -17,6 +17,7 @@ import scala.collection.JavaConverters._
 import java.io.{File, FileInputStream}
 import java.time.Duration
 import scala.collection.convert.ImplicitConversions.`collection asJava`
+import scala.concurrent.duration._
 
 class LogsProducer {
 
@@ -46,6 +47,8 @@ class LogsProducer {
 
 class LogsConsumer extends Actor {
 
+  val deadline = 15.seconds.fromNow
+
   def receive: Receive = {
     case "Consume" =>
       println("Running the Consumer to get the logs...")
@@ -61,7 +64,10 @@ class LogsConsumer extends Actor {
         val consumer = new KafkaConsumer(props)
         val topics = List("ViolatingLogs")
         consumer.subscribe(topics.asJava)
-        val records = consumer.poll(15000).asScala.mkString
+        var records: String = ""
+        while(deadline.hasTimeLeft) {
+          records += consumer.poll(Duration.ofSeconds(10)).asScala.mkString.concat("\n")
+        }
         consumer.close()
         new GenerateMail().sendMail(records)
       }
@@ -70,6 +76,7 @@ class LogsConsumer extends Actor {
 }
 
 class FileMonitor(receiver: ActorRef) extends Actor {
+
   def receive: Receive = {
     case "Start" =>
 

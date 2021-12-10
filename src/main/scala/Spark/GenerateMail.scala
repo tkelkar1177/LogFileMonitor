@@ -28,9 +28,10 @@ class GenerateMail {
       val consumer = new KafkaConsumer(props)
       val topics = List("ViolatingLogs")
       consumer.subscribe(topics.asJava)
-      val records = consumer.poll(10000)
+      val records = consumer.poll(10)
       records.asScala.foreach(record => println(record.value))
       consumer.close()
+      println("\n\n")
     }
   }
 }
