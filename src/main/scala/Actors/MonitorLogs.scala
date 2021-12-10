@@ -9,7 +9,7 @@ import java.util.Properties
 
 class LogsProducer {
 
-  val monitor: ActorRef = system.actorOf(Props[FileMonitor],"FileMonitor")
+  val logMonitor: ActorRef = system.actorOf(Props[FileMonitor],"FileMonitor")
 
   def createLogRecord(logString: String) :Unit = {
     println("Running the Producer to send the logs to create a Kafka record...")
@@ -26,7 +26,7 @@ class LogsProducer {
       producer.send(record)
       println("The Kafka record has been created with the following logs:\n"+logString)
       println("Sending the state back to monitoring...")
-      monitor ! "Monitor"
+      logMonitor ! "Monitor"
     }catch{
       case e:Exception => e.printStackTrace()
     }finally {
