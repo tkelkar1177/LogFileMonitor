@@ -21,7 +21,6 @@ class GenerateMail {
       val props = System.getProperties
       props.setProperty("mail.smtp.host", "smtp.gmail.com")
       props.setProperty("mail.smtp.user","user")
-      props.setProperty("mail.smtp.host", "smtp.gmail.com")
       props.setProperty("mail.smtp.port", "587")
       props.setProperty("mail.debug", "true")
       props.setProperty("mail.smtp.auth", "true")
