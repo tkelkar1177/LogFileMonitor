@@ -29,7 +29,7 @@ class GenerateMail {
       val session = Session.getInstance(props)
       val message = new MimeMessage(session)
 
-      if(errorCount.length + warnCount.length >= 2) {
+      if(errorCount.nonEmpty && warnCount.nonEmpty) {
         val bodyText = errorCount.length + " ERROR logs and " + warnCount.length + " WARN logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0) + " in file:\n" + file
         message.setText(bodyText)
       }
