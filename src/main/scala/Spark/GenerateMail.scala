@@ -9,6 +9,7 @@ class GenerateMail {
 
   def sendMail(logs: String) :Unit = {
 
+    println("Starting Spark...")
     val conf = new SparkConf().setAppName("Logs aggregator")
       .setMaster("local")
     val sc = new SparkContext(conf)
@@ -47,7 +48,8 @@ class GenerateMail {
       message.setRecipients(Message.RecipientType.TO, "tkelka2@gmail.com")
       message.setSubject("ERROR/WARN logs Detected!")
 
-      Transport.send(message)
+      println("Sending mail...")
+      Transport.send(message, "tkelka2@gmail.com", "A1b2c3d4e5f6g7h8")
     }
     sc.stop()
   }
