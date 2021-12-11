@@ -10,6 +10,7 @@ class GenerateMail {
   def sendMail(logs: String) :Unit = {
 
     println("Starting Spark...")
+    println(logs)
     val conf = new SparkConf().setAppName("Logs aggregator")
       .setMaster("local")
     val sc = new SparkContext(conf)
@@ -31,7 +32,7 @@ class GenerateMail {
       val message = new MimeMessage(session)
 
       if(errorCount.length + warnCount.length >= 2) {
-        val bodyText = errorCount.length + " ERROR logs and " + warnCount.length + " logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0)
+        val bodyText = errorCount.length + " ERROR logs and " + warnCount.length + " WARN logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0)
         message.setText(bodyText)
       }
       else if (errorCount.length >= 2) {
