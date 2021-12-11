@@ -19,9 +19,9 @@ class GenerateMail {
 
     if(errorCount.length >= 2 || warnCount.length >= 2 || errorCount.length + warnCount.length >= 2) {
       val props = System.getProperties
-      props.setProperty("mail.smtp.host", "smtp.uic.edu")
+      props.setProperty("mail.smtp.host", "smtp.gmail.com")
       props.setProperty("mail.smtp.user","user")
-      props.setProperty("mail.smtp.host", "smtp.uic.edu")
+      props.setProperty("mail.smtp.host", "smtp.gmail.com")
       props.setProperty("mail.smtp.port", "587")
       props.setProperty("mail.debug", "true")
       props.setProperty("mail.smtp.auth", "true")
@@ -44,12 +44,12 @@ class GenerateMail {
         message.setText(bodyText)
       }
 
-      message.setFrom(new InternetAddress("tkelka2@uic.edu"))
-      message.setRecipients(Message.RecipientType.TO, "tkelka2@uic.edu")
+      message.setFrom(new InternetAddress("tanmay.kelkar17@gmail.com"))
+      message.setRecipients(Message.RecipientType.TO, "tanmay.kelkar17@gmail.com")
       message.setSubject("ERROR/WARN logs Detected!")
 
       println("Sending mail...")
-      Transport.send(message, "tkelka2@uic.edu", "A1b2c3d4e5f6g7h8")
+      Transport.send(message, "tanmay.kelkar17@gmail.com", "Mir@ge12")
     }
     sc.stop()
   }
