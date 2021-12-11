@@ -33,7 +33,7 @@ class LogsProducer {
 class LogsConsumer extends Actor {
 
   def receive: Receive = {
-    case "Consume" =>
+    case ("Consume", file: File) =>
       println("Running the Consumer to get the logs...")
 
       val props: Properties = new Properties()
@@ -50,7 +50,7 @@ class LogsConsumer extends Actor {
       consumer.close()
 
       println("Sending the logs to the Spark app...")
-      new GenerateMail().sendMail(records)
+      new GenerateMail().sendMail(records, file)
       println("Going back to monitoring...")
     case _ => println("Failed to Consume logs from the Kafka record")
   }
@@ -72,7 +72,7 @@ class FileMonitor(receiver: ActorRef, file: File) extends Actor {
           val lastFiveLogs = logs(logs.length-1).concat("\n") + logs(logs.length-2).concat("\n") + logs(logs.length-3).concat("\n") + logs(logs.length-4).concat("\n") + logs(logs.length-5).concat("\n")
           new LogsProducer().createLogRecord(lastFiveLogs)
         }
-        receiver ! "Consume"
+        receiver ! ("Consume", file)
       }
     case _ => println("Failed to start Actor system")
   }
