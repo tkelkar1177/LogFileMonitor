@@ -51,5 +51,6 @@ class GenerateMail {
       Transport.send(message, "tanmay.kelkar17@gmail.com", "Mir@ge12")
     }
     sc.stop()
+    println("Returning to the Monitor application...")
   }
 }
