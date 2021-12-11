@@ -10,11 +10,8 @@ class GenerateMail {
   def sendMail(logs: String) :Unit = {
 
     println("Starting Spark...")
-    val conf = new SparkConf().setAppName("Logs aggregator")
-      .setMaster("local")
-      .set("spark.driver.allowMultipleContexts", "true")
-    val sc = new SparkContext(conf)
-    val lines = sc.parallelize(List(logs)).collect()
+
+    val lines = List(logs)
     val errorCount = lines.flatMap(line => line.split(" ")).filter(x => x.equals("ERROR"))
     val warnCount = lines.flatMap(line => line.split(" ")).filter(x => x.equals("WARN"))
 
@@ -51,7 +48,6 @@ class GenerateMail {
       println("Sending mail...")
       Transport.send(message, "tanmay.kelkar17@gmail.com", "Mir@ge12")
     }
-    sc.stop()
     println("Returning to the Monitor application...")
   }
 }
