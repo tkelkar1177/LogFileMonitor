@@ -67,7 +67,7 @@ class LogsConsumer extends Actor {
 
 class FileMonitor(receiver: ActorRef) extends Actor {
 
-  val file = new File("/home/ec2-user/Project/LFG1/ProjectLFG/log/LogFileGenerator.2021-12-10.log")
+  val file = new File("/home/ec2-user/Project/LFG1/ProjectLFG/log/LogFileGenerator.2021-12-11.log")
 
   def receive: Receive = {
     case "Start" =>

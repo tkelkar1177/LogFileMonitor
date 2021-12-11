@@ -39,7 +39,7 @@ class GenerateMail {
         val bodyText = errorCount.length + " ERROR logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0)
         message.setText(bodyText)
       }
-      else if (warnCount.length >= 2) {
+      else {
         val bodyText = warnCount.length + " WARN logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0)
         message.setText(bodyText)
       }
