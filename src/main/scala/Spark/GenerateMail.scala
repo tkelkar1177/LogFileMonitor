@@ -12,6 +12,7 @@ class GenerateMail {
     println("Starting Spark...")
     val conf = new SparkConf().setAppName("Logs aggregator")
       .setMaster("local")
+      .set("spark.driver.allowMultipleContexts", "true")
     val sc = new SparkContext(conf)
     val lines = sc.parallelize(List(logs)).collect()
     val errorCount = lines.flatMap(line => line.split(" ")).filter(x => x.equals("ERROR"))
