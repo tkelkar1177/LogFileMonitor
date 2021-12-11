@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d87eb6d5-80d2-4db9-a020-30db1b9ba454" name="Default Changelist" comment="" />
+    <list default="true" id="d87eb6d5-80d2-4db9-a020-30db1b9ba454" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/job-1/target/3c86d453/431d6d12/akkawithkafkastreaming_2.13-0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/089e6a7a/f2fbb386/mail-1.5.0-b01.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/2c2cdad5/d0c9847c/akka-actor_2.13-2.6.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/4f99872c/60117078/akka-stream-kafka_2.13-2.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/5aee4832/65a4d7a3/config-1.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/6f16d47c/4d4c8d04/log4j-1.2.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/93ba2492/35c05c4f/log4j-core-2.14.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/95234cd9/afe35309/log4j-api-2.14.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/bd9e1c81/c3077f60/aws-java-sdk-s3-1.12.112.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/cce05b33/b19b2b4e/log4j-slf4j-impl-2.14.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/e6c86b37/1b2ba140/spark-core_2.13-3.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bg-jobs/sbt_d78ac8b3/target/f149f6dc/39829614/akka-stream_2.13-2.6.17.jar" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
