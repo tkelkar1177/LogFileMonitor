@@ -16,7 +16,7 @@ class GenerateMail {
     val errorCount = lines.flatMap(line => line.split(" ")).filter(x => x.equals("ERROR"))
     val warnCount = lines.flatMap(line => line.split(" ")).filter(x => x.equals("WARN"))
 
-    if(errorCount.length >= 2 || warnCount.length >= 2 || errorCount.length + warnCount.length >= 2) {
+    if(errorCount.length >= 2 || warnCount.length >= 2 || (errorCount.nonEmpty && warnCount.nonEmpty)) {
       val props = System.getProperties
       props.setProperty("mail.smtp.host", "smtp.gmail.com")
       props.setProperty("mail.smtp.user","user")
@@ -30,15 +30,15 @@ class GenerateMail {
       val message = new MimeMessage(session)
 
       if(errorCount.length + warnCount.length >= 2) {
-        val bodyText = errorCount.length + " ERROR logs and " + warnCount.length + " WARN logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0) + "in file:\n" + file
+        val bodyText = errorCount.length + " ERROR logs and " + warnCount.length + " WARN logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0) + " in file:\n" + file
         message.setText(bodyText)
       }
       else if (errorCount.length >= 2) {
-        val bodyText = errorCount.length + " ERROR logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0) + "in file:\n" + file
+        val bodyText = errorCount.length + " ERROR logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0) + " in file:\n" + file
         message.setText(bodyText)
       }
       else {
-        val bodyText = warnCount.length + " WARN logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0) + "in file:\n" + file
+        val bodyText = warnCount.length + " WARN logs were detected in the timestamp range: " + logs.split("\n")(0).split(" ")(0) + " - " + logs.split("\n")(4).split(" ")(0) + " in file:\n" + file
         message.setText(bodyText)
       }
 
