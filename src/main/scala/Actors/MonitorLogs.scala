@@ -54,7 +54,7 @@ class LogsConsumer extends Actor {
       val consumer = new KafkaConsumer(props)
       val topics = List("ViolatingLogs")
       consumer.subscribe(topics.asJava)
-      val records = consumer.poll(Duration.ofSeconds(10)).asScala.mkString.concat("\n")
+      val records = consumer.poll(Duration.ofSeconds(10)).asScala.mkString.split("value = ")(1).concat("\n")
       consumer.close()
 
       println("Sending the logs to the Spark app...")

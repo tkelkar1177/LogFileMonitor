@@ -10,7 +10,6 @@ class GenerateMail {
   def sendMail(logs: String) :Unit = {
 
     println("Starting Spark...")
-    println(logs)
     val conf = new SparkConf().setAppName("Logs aggregator")
       .setMaster("local")
     val sc = new SparkContext(conf)
