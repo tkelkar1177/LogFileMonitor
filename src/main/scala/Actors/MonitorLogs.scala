@@ -2,22 +2,14 @@ package Actors
 
 import Actors.MonitorLogs.{receiver, system}
 import Spark.GenerateMail
-
-import java.util.logging.Logger
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
-import akka.kafka.ProducerSettings
-import com.amazonaws.regions.Regions
-import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
-
-import java.util.Properties
-import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import org.apache.kafka.clients.consumer.KafkaConsumer
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
-import scala.collection.JavaConverters._
-import java.io.{File, FileInputStream}
+import java.io.File
 import java.time.Duration
-import scala.collection.convert.ImplicitConversions.`collection asJava`
-import scala.concurrent.duration._
+import java.util.Properties
+import scala.collection.JavaConverters._
 
 class LogsProducer {
 

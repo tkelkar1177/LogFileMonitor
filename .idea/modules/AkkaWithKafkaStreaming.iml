@@ -63,6 +63,7 @@
     <orderEntry type="library" name="sbt: jakarta.validation:jakarta.validation-api:2.0.2:jar" level="project" />
     <orderEntry type="library" name="sbt: jakarta.ws.rs:jakarta.ws.rs-api:2.1.6:jar" level="project" />
     <orderEntry type="library" name="sbt: javax.activation:activation:1.1.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: javax.mail:mail:1.5.0-b01:jar" level="project" />
     <orderEntry type="library" name="sbt: joda-time:joda-time:2.8.1:jar" level="project" />
     <orderEntry type="library" name="sbt: log4j:log4j:1.2.17:jar" level="project" />
     <orderEntry type="library" name="sbt: net.razorvine:pyrolite:4.30:jar" level="project" />
