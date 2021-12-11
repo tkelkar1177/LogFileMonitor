@@ -29,3 +29,5 @@ This has the primary task of collecting the violating logs and generating an ema
 The project is run on an EC2 instance.
 
 The idea behind the logic is that I've set up the LogFileGenerator to produce logs every 2 seconds. So the actor which monitors the log files taes the last 5 generated logs which are approximately spanning a time interval of 10 seconds. I check for the WARN and ERROR log levels and if the above scenarios occur, a mail is sent to all stakeholders. The log files are communicated between the actors through a Kafka Producer, which creates a record of the logs, and a consumer Actor, which reads these records and passes them on to the Spark application, where the number of WARN and ERROR logs are counted and the mail is generated.
+
+The link to the YouTube video is here: https://youtu.be/80NjdQ61xks
