@@ -44,12 +44,12 @@ class GenerateMail {
         message.setText(bodyText)
       }
 
-      message.setFrom(new InternetAddress("tkelka2@gmail.com"))
-      message.setRecipients(Message.RecipientType.TO, "tkelka2@gmail.com")
+      message.setFrom(new InternetAddress("tkelka2@uic.edu"))
+      message.setRecipients(Message.RecipientType.TO, "tkelka2@uic.edu")
       message.setSubject("ERROR/WARN logs Detected!")
 
       println("Sending mail...")
-      Transport.send(message, "tkelka2@gmail.com", "A1b2c3d4e5f6g7h8")
+      Transport.send(message, "tkelka2@uic.edu", "A1b2c3d4e5f6g7h8")
     }
     sc.stop()
   }

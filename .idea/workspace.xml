@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d87eb6d5-80d2-4db9-a020-30db1b9ba454" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Spark/GenerateMail.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Spark/GenerateMail.scala" afterDir="false" />
-    </list>
+    <list default="true" id="d87eb6d5-80d2-4db9-a020-30db1b9ba454" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
