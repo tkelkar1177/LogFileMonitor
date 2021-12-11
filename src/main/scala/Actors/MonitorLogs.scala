@@ -26,10 +26,10 @@ class LogsProducer {
     logger.info("Running the Producer to send the logs to create a Kafka record...")
 
     val props:Properties = new Properties()
-    props.put(config.getString("logFileMonitor.properties.producer.bootstrapServers.key"), config.getString("logFileMonitor.properties.producer.bootstrapServers.key"))
+    props.put(config.getString("logFileMonitor.properties.producer.bootstrapServers.key"), config.getString("logFileMonitor.properties.producer.bootstrapServers.value"))
     props.put(config.getString("logFileMonitor.properties.producer.keySerializer.key"), config.getString("logFileMonitor.properties.producer.keySerializer.value"))
-    props.put(config.getString("logFileMonitor.properties.producer.valueSerializer.key"), config.getString("logFileMonitor.properties.producer.valueSerializer.key"))
-    props.put(config.getString("logFileMonitor.properties.producer.acks.key"), config.getString("logFileMonitor.properties.producer.acks.key"))
+    props.put(config.getString("logFileMonitor.properties.producer.valueSerializer.key"), config.getString("logFileMonitor.properties.producer.valueSerializer.value"))
+    props.put(config.getString("logFileMonitor.properties.producer.acks.key"), config.getString("logFileMonitor.properties.producer.acks.value"))
     val producer = new KafkaProducer[String, String](props)
     val topic = config.getString("logFileMonitor.topic")
     val record = new ProducerRecord[String, String](topic, config.getString("logFileMonitor.key"), logString)
