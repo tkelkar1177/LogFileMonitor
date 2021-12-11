@@ -46,7 +46,6 @@ class LogsProducer {
 
 class LogsConsumer extends Actor {
 
-  //noinspection FieldFromDelayedInit
   val logsMonitor: ActorRef = system.actorOf(Props(new FileMonitor(receiver)),"LogFileMonitor")
 
   def receive: Receive = {
@@ -86,7 +85,7 @@ class FileMonitor(receiver: ActorRef) extends Actor {
       linesSource.close()
       val logs = lines.split("\n")
       if(logs.length >=5) {
-        val lastFiveLogs = logs(logs.length-1) + logs(logs.length-2) + logs(logs.length-3) + logs(logs.length-4) + logs(logs.length-5)
+        val lastFiveLogs = logs(logs.length-1).concat("\n") + logs(logs.length-2).concat("\n") + logs(logs.length-3).concat("\n") + logs(logs.length-4).concat("\n") + logs(logs.length-5).concat("\n")
         new LogsProducer().createLogRecord(receiver, lastFiveLogs)
       }
       /*val lastLine = logs(logs.length-1).split(" ")
