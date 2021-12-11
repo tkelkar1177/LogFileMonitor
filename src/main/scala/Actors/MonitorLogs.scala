@@ -72,7 +72,8 @@ class FileMonitor(receiver: ActorRef) extends Actor {
   def receive: Receive = {
     case "Start" =>
 
-      println("Starting log file monitoring")
+      Thread.sleep(2000)
+      println("Starting log file monitoring...")
 
       val linesSource = scala.io.Source.fromFile(file)
       val lines = linesSource.mkString
