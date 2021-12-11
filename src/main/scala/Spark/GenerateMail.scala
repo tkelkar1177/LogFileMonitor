@@ -17,5 +17,6 @@ class GenerateMail {
     val sc = new SparkContext(conf)
 
     println("\n\n"+logs)
+    sc.stop()
   }
 }

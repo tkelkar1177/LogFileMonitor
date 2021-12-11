@@ -51,7 +51,7 @@ class LogsConsumer extends Actor {
   def receive: Receive = {
     case "Consume" =>
       println("Running the Consumer to get the logs...")
-      println("Running the Consumer in the Spark app to get the logs...")
+
       val props: Properties = new Properties()
       props.put("group.id", "ViolatingLogs")
       props.put("bootstrap.servers", "localhost:9092")
@@ -64,6 +64,8 @@ class LogsConsumer extends Actor {
       consumer.subscribe(topics.asJava)
       val records = consumer.poll(Duration.ofSeconds(10)).asScala.mkString.concat("\n")
       consumer.close()
+
+      println("Sending the logs to the Spark app...")
       new GenerateMail().sendMail(records)
       println("Going back to monitoring...")
       logsMonitor ! "Start"
