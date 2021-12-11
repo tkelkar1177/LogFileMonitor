@@ -19,9 +19,9 @@ class GenerateMail {
 
     if(errorCount.length >= 2 || warnCount.length >= 2 || errorCount.length + warnCount.length >= 2) {
       val props = System.getProperties
-      props.setProperty("mail.smtp.host", "smtp.gmail.com")
+      props.setProperty("mail.smtp.host", "smtp.uic.edu")
       props.setProperty("mail.smtp.user","user")
-      props.setProperty("mail.smtp.host", "smtp.gmail.com")
+      props.setProperty("mail.smtp.host", "smtp.uic.edu")
       props.setProperty("mail.smtp.port", "587")
       props.setProperty("mail.debug", "true")
       props.setProperty("mail.smtp.auth", "true")
